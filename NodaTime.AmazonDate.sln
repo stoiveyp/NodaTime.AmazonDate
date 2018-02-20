@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodaTime.AmazonDate", "NodaTime.AmazonDate\NodaTime.AmazonDate.csproj", "{3C00ACD3-C833-45CE-8E92-1EFC43A4CDAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodaTime.AmazonDate.Tests", "NodaTime.AmazonDate.Tests\NodaTime.AmazonDate.Tests.csproj", "{11BD392B-1E1E-4934-95BE-9D391CEE5F08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C00ACD3-C833-45CE-8E92-1EFC43A4CDAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C00ACD3-C833-45CE-8E92-1EFC43A4CDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C00ACD3-C833-45CE-8E92-1EFC43A4CDAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C00ACD3-C833-45CE-8E92-1EFC43A4CDAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11BD392B-1E1E-4934-95BE-9D391CEE5F08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11BD392B-1E1E-4934-95BE-9D391CEE5F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11BD392B-1E1E-4934-95BE-9D391CEE5F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11BD392B-1E1E-4934-95BE-9D391CEE5F08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
