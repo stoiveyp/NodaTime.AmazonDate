@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.1-pre</Version>
+    <Authors>Steven Pears</Authors>
+    <Company />
+    <PackageProjectUrl>https://github.com/stoiveyp/NodaTime.AmazonDate</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/stoiveyp/NodaTime.AmazonDate</RepositoryUrl>
+    <Description>Utility library to parse the text returned in an AMAZON.DATE Alexa slot type. Converts the text into a from and to LocalDate type</Description>
+    <PackageReleaseNotes>Initial package setup.</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
