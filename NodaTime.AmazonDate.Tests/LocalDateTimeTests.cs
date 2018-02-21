@@ -13,8 +13,8 @@ namespace NodaTime.AmazonDate.Tests
         public void ParseValidLocalDate()
         {
             var result = AmazonDateParser.Parse(LocalDateString);
-            IsFirst2015(result.From);
-            IsFirst2015(result.To);
+            Utility.IsFirst2015(result.From);
+            Utility.IsFirst2015(result.To);
         }
 
         [Fact]
@@ -27,29 +27,18 @@ namespace NodaTime.AmazonDate.Tests
         [Fact]
         public void TryParseValidLocalDate()
         {
-            AmazonDate testResultDate;
-            var result = AmazonDateParser.TryParse(LocalDateString, out testResultDate);
+            var result = AmazonDateParser.TryParse(LocalDateString, out var testResultDate);
             Assert.True(result);
-            IsFirst2015(testResultDate.From);
-            IsFirst2015(testResultDate.To);
+            Utility.IsFirst2015(testResultDate.From);
+            Utility.IsFirst2015(testResultDate.To);
         }
 
         [Fact]
         public void TryParseInvalidLocalDate()
         {
-            AmazonDate testResultDate;
-            var result = AmazonDateParser.TryParse(InvalidDateString, out testResultDate);
+            var result = AmazonDateParser.TryParse(InvalidDateString, out var testResultDate);
             Assert.False(result);
             Assert.Null(testResultDate);
-        }
-
-        private void IsFirst2015(LocalDate date) => IsDate(date, 2015, 1, 1);
-
-        private void IsDate(LocalDate result, int year, int month, int day)
-        {
-            Assert.Equal(year, result.Year);
-            Assert.Equal(month,result.Month);
-            Assert.Equal(day, result.Day);
         }
     }
 }
