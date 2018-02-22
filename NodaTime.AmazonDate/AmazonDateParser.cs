@@ -9,8 +9,55 @@ namespace NodaTime.AmazonDate
 
         public static AmazonDate Parse(string value)
         {
-            //NodaTime.AnnualDate
-            //NodaTime.Calendars.WeekYearRules
+            if (string.IsNullOrWhiteSpace(value) || value.Length < 3)
+            {
+                return null;
+            }
+
+            for (var pos = 0; pos <= 2; pos++)
+            {
+                if (!char.IsNumber(value[pos]))
+                {
+                    return null;
+                }
+            }
+
+            if (value.Length == 4)
+            {
+                if (value[3] == 'X')
+                {
+                    var year = int.Parse(value.Substring(0, 3) + "0");
+                    var from = new LocalDate(year, 01, 01);
+                    return new AmazonDate(from, from.PlusYears(10));
+                }
+
+                if (char.IsNumber(value[3]))
+                {
+                    var year = int.Parse(value);
+                    var from = new LocalDate(year, 01, 01);
+                    return new AmazonDate(from, from.PlusYears(1));
+                }
+
+                return null;
+            }
+
+            if (value.Length == 7 &&  
+            char.IsNumber(value[3]) &&
+            value[4] == '-' &&
+            char.IsNumber(value[5]) &&
+            char.IsNumber(value[6]))
+            {
+                var year = int.Parse(value.Substring(0, 4));
+                var month = int.Parse(value.Substring(5, 2));
+                var from = new LocalDate(year, month, 01);
+                return new AmazonDate(from, from.PlusMonths(1));
+            }
+
+            if (value.Length < 8)
+            {
+                return null;
+            }
+
             var local = Text.LocalDatePattern.Iso.Parse(value);
             if (local.Success)
             {

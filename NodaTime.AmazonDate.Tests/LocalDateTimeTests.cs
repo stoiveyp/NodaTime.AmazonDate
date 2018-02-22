@@ -8,6 +8,9 @@ namespace NodaTime.AmazonDate.Tests
     {
         private const string LocalDateString = "2015-01-01";
         private const string InvalidDateString = "abcd";
+        private const string MonthString = "2015-11";
+        private const string YearString = "2015";
+        private const string DecadeString = "201X";
 
         [Fact]
         public void ParseValidLocalDate()
@@ -15,6 +18,30 @@ namespace NodaTime.AmazonDate.Tests
             var result = AmazonDateParser.Parse(LocalDateString);
             Utility.IsFirst2015(result.From);
             Utility.IsFirst2015(result.To);
+        }
+
+        [Fact]
+        public void ParseMonthOnlyDate()
+        {
+            var result = AmazonDateParser.Parse(MonthString);
+            Utility.IsDate(result.From,2015,11,01);
+            Utility.IsDate(result.To,2015,12,01);
+        }
+
+        [Fact]
+        public void ParseYearOnlyDate()
+        {
+            var result = AmazonDateParser.Parse(YearString);
+            Utility.IsDate(result.From, 2015, 01, 01);
+            Utility.IsDate(result.To, 2016, 01, 01);
+        }
+
+        [Fact]
+        public void ParseDecadeOnlyDate()
+        {
+            var result = AmazonDateParser.Parse(DecadeString);
+            Utility.IsDate(result.From, 2010, 01, 01);
+            Utility.IsDate(result.To, 2020, 01, 01);
         }
 
         [Fact]
