@@ -1,9 +1,15 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodaTime.AmazonDate", "NodaTime.AmazonDate\NodaTime.AmazonDate.csproj", "{3C00ACD3-C833-45CE-8E92-1EFC43A4CDAC}"
+# Visual Studio 15
+VisualStudioVersion = 15.0.27413.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodaTime.AmazonDate", "NodaTime.AmazonDate\NodaTime.AmazonDate.csproj", "{3C00ACD3-C833-45CE-8E92-1EFC43A4CDAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NodaTime.AmazonDate.Tests", "NodaTime.AmazonDate.Tests\NodaTime.AmazonDate.Tests.csproj", "{11BD392B-1E1E-4934-95BE-9D391CEE5F08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NodaTime.AmazonDate.Tests", "NodaTime.AmazonDate.Tests\NodaTime.AmazonDate.Tests.csproj", "{11BD392B-1E1E-4934-95BE-9D391CEE5F08}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{875EDC9B-8918-407F-9EC3-60A83C053C0E}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,5 +25,11 @@ Global
 		{11BD392B-1E1E-4934-95BE-9D391CEE5F08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11BD392B-1E1E-4934-95BE-9D391CEE5F08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11BD392B-1E1E-4934-95BE-9D391CEE5F08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F119137F-0D21-4D90-B6E2-50428FCC0244}
 	EndGlobalSection
 EndGlobal
