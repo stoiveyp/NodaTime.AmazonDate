@@ -24,33 +24,13 @@ namespace NodaTime.AmazonDate
 
             if (value.Length == 4)
             {
-                if (value[3] == 'X')
-                {
-                    var year = int.Parse(value.Substring(0, 3) + "0");
-                    var from = new LocalDate(year, 01, 01);
-                    return new AmazonDate(from, from.PlusYears(10));
-                }
-
-                if (char.IsNumber(value[3]))
-                {
-                    var year = int.Parse(value);
-                    var from = new LocalDate(year, 01, 01);
-                    return new AmazonDate(from, from.PlusYears(1));
-                }
-
-                return null;
+                return YearParse(value);
             }
 
-            if (value.Length == 7 &&  
-            char.IsNumber(value[3]) &&
-            value[4] == '-' &&
-            char.IsNumber(value[5]) &&
-            char.IsNumber(value[6]))
+            var monthRange = MonthParse(value);
+            if(monthRange != null)
             {
-                var year = int.Parse(value.Substring(0, 4));
-                var month = int.Parse(value.Substring(5, 2));
-                var from = new LocalDate(year, month, 01);
-                return new AmazonDate(from, from.PlusMonths(1));
+                return monthRange;
             }
 
             if (value.Length < 8)
@@ -67,7 +47,15 @@ namespace NodaTime.AmazonDate
             var weekNumberMatch = WeekNumberParser.Match(value);
             if (weekNumberMatch.Success)
             {
-                var year = int.Parse(weekNumberMatch.Groups["year"].Value);
+                return WeekNumberParse(weekNumberMatch);
+            }
+
+            return null;
+        }
+
+        private static AmazonDate WeekNumberParse(Match weekNumberMatch)
+        {
+            var year = int.Parse(weekNumberMatch.Groups["year"].Value);
                 var weekNumber = int.Parse(weekNumberMatch.Groups["weekNumber"].Value);
                 if (weekNumber > 53)
                 {
@@ -79,9 +67,40 @@ namespace NodaTime.AmazonDate
                 var from = Calendars.WeekYearRules.Iso.GetLocalDate(year, weekNumber, fromDay, CalendarSystem.Iso);
                 var to = Calendars.WeekYearRules.Iso.GetLocalDate(year, weekNumber, IsoDayOfWeek.Sunday, CalendarSystem.Iso);
                 return new AmazonDate(from, to);
-            }
+        }
 
+        private static AmazonDate MonthParse(string value)
+        {
+            if (value.Length == 7 &&  
+            char.IsNumber(value[3]) &&
+            value[4] == '-' &&
+            char.IsNumber(value[5]) &&
+            char.IsNumber(value[6]))
+            {
+                var year = int.Parse(value.Substring(0, 4));
+                var month = int.Parse(value.Substring(5, 2));
+                var from = new LocalDate(year, month, 01);
+                return new AmazonDate(from, from.PlusMonths(1));
+            }
             return null;
+        }
+
+        private static AmazonDate YearParse(string value)
+        {
+            if (value[3] == 'X')
+                {
+                    var year = int.Parse(value.Substring(0, 3) + "0");
+                    var from = new LocalDate(year, 01, 01);
+                    return new AmazonDate(from, from.PlusYears(10));
+                }
+
+                if (char.IsNumber(value[3]))
+                {
+                    var year = int.Parse(value);
+                    var from = new LocalDate(year, 01, 01);
+                    return new AmazonDate(from, from.PlusYears(1));
+                }
+                return null;
         }
 
         public static bool TryParse(string value, out AmazonDate date)
