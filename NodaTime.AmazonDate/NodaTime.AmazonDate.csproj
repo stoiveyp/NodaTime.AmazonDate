@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0</Version>
+    <Version>1.0.4</Version>
     <Authors>Steven Pears</Authors>
     <Company />
     <PackageProjectUrl>https://github.com/stoiveyp/NodaTime.AmazonDate</PackageProjectUrl>
@@ -11,9 +11,17 @@
     <Description>Utility library to parse the text returned in an AMAZON.DATE Alexa slot type. Converts the text into a from and to LocalDate type</Description>
     <PackageReleaseNotes>Now supports:
 Date, Weekend, Week, Month, Year, Decade</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="NodaTime" Version="2.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>
